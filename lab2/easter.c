@@ -19,8 +19,7 @@
 int calculate_easter_date( int year );
 int main ( void );
 
-int calculate_easter_date( int year )
-{ 
+int calculate_easter_date( int year ) { 
     int golden_year;
     int century;
     int skipped_leap_years;
@@ -41,7 +40,7 @@ int calculate_easter_date( int year )
     sunday_date = 5 * year / 4 - skipped_leap_years - 10;
     epact = (11 * golden_year + 20 + correction - skipped_leap_years) % 30;
     
-    if ( ( epact == 25 && golden_year > 11 ) || epact == 24 ){
+    if ( ( epact == 25 && golden_year > 11 ) || epact == 24 ) {
         epact++;
     }
  
@@ -64,13 +63,12 @@ int calculate_easter_date( int year )
     return day_of_month;    
 }    
     
-int main( void )
-{
+int main( void ) {
     int year;
     int date;
     int result;
 
-    while ( 1 ){
+    while ( 1 ) {
         result = scanf("%d", &year);
 
         if ( result == EOF ) {
