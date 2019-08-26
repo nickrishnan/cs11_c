@@ -79,23 +79,12 @@ int main(int argc, char *argv[]) {
             h_flag = 1;
         }    
         else {
-            if (num_elements < ARG_MAX) {
+            if (num_elements <= ARG_MAX) {
                 to_sort[num_elements] = atoi(argv[i]);
             }
             num_elements++;
         }   
     }
-    if (b_flag) {
-        bubble_sort(to_sort, num_elements);
-    }
-    else {
-        min_elem_sort(to_sort, num_elements);
-    }
-    if (num_elements <= 0 || num_elements > ARG_MAX) {
-        fprintf(stderr, "usage: %s [-b] [-q] number1 [number 2] ..."\
-            " (maximum %d numbers)\n", argv[0], ARG_MAX);
-        return -1;
-     }
     if (num_elements <= 0 || num_elements > 32 || h_flag) {
         fprintf(stderr, "usage: NAME\n    %s\n\nSYNOPSIS\n    sorter [OPTIONS]"\
         " [NUMBERS]"\
@@ -107,7 +96,14 @@ int main(int argc, char *argv[]) {
         , argv[0], ARG_MAX);
         return -1;
     }
-    if(!q_flag) {
+ 
+    if (b_flag) {
+        bubble_sort(to_sort, num_elements);
+    }
+    else {
+        min_elem_sort(to_sort, num_elements);
+    }
+   if(!q_flag) {
         for (i = 0; i < num_elements; i++) {
             printf("%d\n", to_sort[i]);
         }        
